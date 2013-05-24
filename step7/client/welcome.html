@@ -1,0 +1,8 @@
+<template name="welcome">
+	{{#if loggingIn}}
+		Please wait...logging in...
+	{{/if}}
+	{{#if currentUser}}
+		<h2>Welcome, {{currentUser.username}}!</h2>
+	{{/if}}
+</template>
