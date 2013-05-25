@@ -1,5 +1,5 @@
 Meteor.startup(function () {
-	Session.setDefault('votes', 10);
+	Session.setDefault('votes', 0);
 
 	// INSERT
 	// try{
