@@ -1,5 +1,52 @@
 <template name="bands">
-	{{#each getBands}}
-		{{name}} {{votes}}<br/>
-	{{/each}}
+	<div class="form-inline">
+		<fieldset>
+	    <legend>Vote 4 Your Favorite!</legend>
+	    {{#if currentUser}}
+		    <label>Add New Band</label>
+		    <div class="input-append">
+				  <input type="text" id="band" name="band" class="input" placeholder="Add yo fav band!">
+				  <button id="btnAdd" class="btn" type="button">Add 2 Battle!</button>
+				</div>
+				<p></p>
+			{{/if}}
+			<label>Votes &gt; </label>
+			<div class="input-append">
+			  <input type="text" id="votes" name="votes" class="input" value="0">
+			  <button id="btnShow" class="btn" type="button">Show!</button>
+			</div>
+	  </fieldset>
+	</div>
+	<hr />
+	<table class="table table-striped table-bordered table-condensed table-hover">
+  	<thead>
+	    <tr>
+	    	<th>Band Name</th>
+	    	<th>Total Votes</th>
+	    	<th>Vote</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+			{{#each getBands}}
+				<tr>
+					<td>{{name}}</td>
+					<td><center>{{votes}}</center></td>
+					<td>
+						<center>
+							<button class="btn btnUp">
+								<i class="icon-thumbs-up"></i></button> 
+							<button class="btn btnDown">
+								<i class="icon-thumbs-down"></i>
+							</button>
+							{{#if myBand}}
+								<button class="btn btnTrash">
+									<i class="icon-trash"></i>
+								</button>
+							{{/if}}
+						</center>
+					</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
 </template>
