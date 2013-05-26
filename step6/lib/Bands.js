@@ -1,8 +1,10 @@
 Bands = new Meteor.Collection("bands");
 
-Bands.validate = function(option){
-	if(Bands.findOne({name: option.name})){
-		throw 'Band name must be unique!';
+Bands.validate = function(options){
+	if(options.name){
+		if(Bands.findOne({name: options.name})){
+			throw 'Band name must be unique!';
+		}
 	}
 };
 

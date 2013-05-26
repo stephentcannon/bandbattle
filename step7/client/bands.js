@@ -3,7 +3,7 @@ Template.bands.getBands = function(){
 };
 
 Template.bands.myBand = function(){
-  console.log(this);
+  // console.log(this);
   if(Meteor.user()){
     if(this.userId == Meteor.user()._id){
       return true;
@@ -16,8 +16,13 @@ Template.bands.events({
     event.preventDefault();
     // event.stopPropagation();
     // console.log(template.find('#band').value );
-    Bands.insert({
-      name: template.find('#band').value
+    Bands.validate({name: template.find('#band').value});
+    Bands.insert({name: template.find('#band').value}, function(error, _id){
+      // if(error){
+      //   console.log(error);
+      // } else {
+      //   console.log(_id);
+      // }
     });
   },
   'click #btnShow': function(event, template){
@@ -29,31 +34,31 @@ Template.bands.events({
   'click .btnUp': function(event, template) {
     event.preventDefault();
     // event.stopPropagation();
-    console.log(this);
+    // console.log(this);
     Bands.update({_id: this._id}, {$inc: {votes: 1}}, function(error){
-      if(error){
-        console.log(error);
-      }
+      // if(error){
+      //   console.log(error);
+      // }
     });
   },
   'click .btnDown': function(event, template) {
     event.preventDefault();
     // event.stopPropagation();
-    console.log(this);
+    // console.log(this);
     Bands.update({_id: this._id}, {$inc: {votes: -1}}, function(error){
-      if(error){
-        console.log(error);
-      }
+      // if(error){
+      //   console.log(error);
+      // }
     });
   },
   'click .btnTrash': function(event, template) {
     event.preventDefault();
     // event.stopPropagation();
-    console.log(this);
+    // console.log(this);
     Bands.remove({_id: this._id}, function(error){
-      if(error){
-        console.log(error);
-      }
+      // if(error){
+      //   console.log(error);
+      // }
     });
   },
 });

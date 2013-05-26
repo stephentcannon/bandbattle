@@ -1,4 +1,4 @@
-var bandsQuery = Bands.find();
+//var bandsQuery = Bands.find();
 
 // var bandsHandle = bandsQuery.observe({
 //   added: function (document) {
