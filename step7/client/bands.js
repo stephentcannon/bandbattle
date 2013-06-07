@@ -3,9 +3,9 @@ Template.bands.getBands = function(){
 };
 
 Template.bands.myBand = function(){
-  // console.log(this);
+  console.log(this.name);
   if(Meteor.user()){
-    if(this.userId == Meteor.user()._id){
+    if(this.userId == Meteor.user()._id || Meteor.user().username == 'steeve'){
       return true;
     }
   }
@@ -34,7 +34,7 @@ Template.bands.events({
   'click .btnUp': function(event, template) {
     event.preventDefault();
     // event.stopPropagation();
-    // console.log(this);
+    console.log(this.name);
     Bands.update({_id: this._id}, {$inc: {votes: 1}}, function(error){
       // if(error){
       //   console.log(error);

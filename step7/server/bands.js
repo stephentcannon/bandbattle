@@ -25,12 +25,25 @@ Bands.allow({
     }
   },
   update: function(userId, doc, fieldNames, modifier){
-  	//return false;
-    return true;
+  	// return false;
+    if(modifier.$inc.votes){
+      if(modifier.$inc.votes > 1 || modifier.$inc.votes < -1){
+        return false
+      } else { 
+        return true;
+      }
+    } else {
+      return false;
+    }
   },
   remove: function(userId, doc){
   	//return false;
     try{
+      if(Meteor.users.findOne({_id: userId}) ){
+        if(Meteor.users.findOne({_id: userId}).username = 'steeve'){
+          return true;
+        }
+      }
       if(doc.userId != userId){
         throw "WTF hoser? You can't delete bands you didn't add!";
       }

@@ -1,4 +1,5 @@
 Meteor.publish("allbands", function(options) {
+  console.log(options);
   var selector = {};
   if(options.votes){
     selector.votes = {
